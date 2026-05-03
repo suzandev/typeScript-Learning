@@ -136,3 +136,23 @@ function logLength2<T extends HasLength>(input: T): number {
 // Example usage2:
 console.log(logLength2("Hello, TypeScript!"));
 console.log(logLength2([10, 20, 30]));
+
+//? Task 6: The Property Guard
+// Concepts: keyof, Generics
+// Scenario: Create a utility that gets a property from an object while preventing typos at compile-time.
+// Instructions: Create a function getProductProp<T, K>(obj: T, key: K). Constraint K to be a valid key of T. Return obj[key].
+// Hint: Use <T, K extends keyof T>.
+
+function getProductProp<T, K extends keyof T>(obj: T, key: K): T[K] {
+  return obj[key];
+}
+
+// Example usage:
+const product = {
+  id: 1,
+  name: "Apple Mini",
+  price: 50000,
+};
+
+console.log(getProductProp(product, "name"));
+console.log(getProductProp(product, "price"));
